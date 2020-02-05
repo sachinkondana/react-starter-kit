@@ -1,0 +1,16 @@
+# system
+.DS_Store
+.directory
+
+# editor
+.idea/workspace.xml
+*~
+*.swp
+
+# build/dependencies
+\.tmp/
+/dist*
+/build
+node_modules/
+
+package-lock.json
