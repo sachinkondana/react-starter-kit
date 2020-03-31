@@ -1,14 +1,17 @@
 @import './_variables.scss';
 @import './_mixins.scss';
+@import './_global.scss';
 
 input {
     width: 100%;
+
     @include formInput;
 }
 
 textarea {
     width: 100%;
     height: $input-height * 2;
+
     @include formInput;
 }
 
@@ -18,20 +21,4 @@ button {
     padding: 8px 16px;
     font-size: 16px;
     cursor: pointer;
-}
-
-:global(.danger) {
-    background-color: #F44336;
-
-    &:hover {
-        background-color: #e64034;
-    }
-}
-
-:global(.primary) {
-    background-color: #009688;
-
-    &:hover {
-        background-color: #0b776d;
-    }
 }
