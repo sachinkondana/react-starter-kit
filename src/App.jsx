@@ -8,17 +8,17 @@ import rootReducer from './reducers';
 import './styles/common.module.scss';
 
 const store = createStore(
-  rootReducer,
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    rootReducer,
+    // eslint-disable-next-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Goals />
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Goals />
+        </Provider>
+    );
 }
 
 export default App;

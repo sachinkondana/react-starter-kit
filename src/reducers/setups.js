@@ -1,12 +1,12 @@
 const initialState = {
-  appVersion: '0.0.1',
+    appVersion: '0.0.1',
 };
 
 const todos = (state = initialState, action) => {
-  switch (action.type) {
+    switch (action.type) {
     default:
-      return state;
-  }
+        return state;
+    }
 };
 
 export default todos;

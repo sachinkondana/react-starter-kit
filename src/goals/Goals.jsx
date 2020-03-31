@@ -41,13 +41,12 @@ function ManageGoals() {
     const handleFormSubmit = () => { };
 
     const saveGoals = () => {
-        const updatedGoals = goals.filter(g => g.dirty);
-        GoalActions.bulkSave(updatedGoals).then((data) => {
+        const updatedGoals = goals.filter((g) => g.dirty);
+        GoalActions.bulkSave(updatedGoals).then(() => {
             // Mark all saved goals
-            const newGoals = goals.map(g => Utils.omit(g, 'dirty'));
+            const newGoals = goals.map((g) => Utils.omit(g, 'dirty'));
             setGoals(newGoals);
-
-        }).catch(error => setNotifications(error.message));
+        }).catch((error) => setNotifications(error.message));
     };
 
     // soft actions
@@ -55,27 +54,29 @@ function ManageGoals() {
         const newGoals = [...goals, { ...EMPTY_GOAL }];
 
         setGoals(newGoals);
-    }
+    };
 
-    const renderGoals = (goals.length > 0) ? goals.map((g, index) => {
-        return (
-            <Goal
-                key={index}
-                id={index}
-                data={g}
-                onSubmit={handleFormSubmit}
-                onRemove={deleteGoal}
-                onChange={handleChange}
-            />
-        )
-    }) : (
-            <div className={styles.empty}>There is no goals in your list, please create one.</div>
-        );
+    const renderGoals = (goals.length > 0) ? goals.map((g, index) => (
+        <Goal
+            key={`${g.id}`}
+            id={index}
+            data={g}
+            onSubmit={handleFormSubmit}
+            onRemove={deleteGoal}
+            onChange={handleChange}
+        />
+    )) : (
+        <div className={styles.empty}>There is no goals in your list, please create one.</div>
+    );
 
     const renderActions = (
         <div className={styles.actions}>
-            <button className="danger" onClick={() => createNewGoal()}><i className="icon-bullseye"></i> Add a New Goal</button>
-            <button className="primary" onClick={() => saveGoals()}>Save</button>
+            <button type="button" className="danger" onClick={() => createNewGoal()}>
+                <i className="icon-bullseye" />
+                {' '}
+                Add a New Goal
+            </button>
+            <button type="button" className="primary" onClick={() => saveGoals()}>Save</button>
         </div>
     );
 
