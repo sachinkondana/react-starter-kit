@@ -1,65 +1,67 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 const ApiServices = {
-    get: function (url) {
-        const requestOptions = {
-            method: 'GET',
-        };
+  get(url) {
+    const requestOptions = {
+      method: 'GET',
+    };
 
-        return this.fetch(url, requestOptions);
-    },
-    post: function (url, body) {
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(body),
-        };
+    return this.fetch(url, requestOptions);
+  },
+  post(url, body) {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(body),
+    };
 
-        return this.fetch(url, requestOptions);
-    },
-    put: function (url, body) {
-        const requestOptions = {
-            method: 'PUT',
-            body: JSON.stringify(body),
-        };
+    return this.fetch(url, requestOptions);
+  },
+  put(url, body) {
+    const requestOptions = {
+      method: 'PUT',
+      body: JSON.stringify(body),
+    };
 
-        return this.fetch(url, requestOptions);
-    },
-    delete: function (url, body) {
-        const requestOptions = {
-            method: 'DELETE',
-            body: JSON.stringify(body),
-        };
+    return this.fetch(url, requestOptions);
+  },
+  delete(url, body) {
+    const requestOptions = {
+      method: 'DELETE',
+      body: JSON.stringify(body),
+    };
 
-        return this.fetch(url, requestOptions);
-    },
-    save: function (url, body) {
-        if (body.hasOwnProperty('id')) {
-            this.put(url, body);
-        } else {
-            this.post(url, body);
-        }
-    },
-    fetch: function (url, requestOptions) {
-        return fetch(API_URL + url, requestOptions).then((r) => this.handleResponse(r));
-    },
-    parse: function (text) {
-        try {
-            return JSON.parse(text)
-        } catch (err) {
-            return null;
-        }
-    },
-    handleResponse: function (response) {
-        return response.text().then((text) => {
-            const data = text && this.parse(text);
-            if (data === null || !response.ok) {
-                const error = (data && data.message) || response.statusText;
-                return Promise.reject(error);
-            }
+    return this.fetch(url, requestOptions);
+  },
+  save(url, body) {
+    const hasId = Object.prototype.hasOwnProperty.call(body, 'id');
 
-            return data;
-        });
-    },
-}
+    if (hasId) {
+      this.put(url, body);
+    } else {
+      this.post(url, body);
+    }
+  },
+  fetch(url, requestOptions) {
+    return fetch(API_URL + url, requestOptions).then((r) => this.handleResponse(r));
+  },
+  parse(text) {
+    try {
+      return JSON.parse(text);
+    } catch (err) {
+      return null;
+    }
+  },
+  handleResponse(response) {
+    return response.text().then((text) => {
+      const data = text && this.parse(text);
+      if (data === null || !response.ok) {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
+      }
+
+      return data;
+    });
+  },
+};
 
 export default ApiServices;

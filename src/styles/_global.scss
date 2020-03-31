@@ -1,0 +1,17 @@
+:global {
+    .primary {
+        background-color: #009688;
+
+        &:hover {
+            background-color: #0b776d;
+        }
+    }
+
+    .danger {
+        background-color: #f44336;
+
+        &:hover {
+            background-color: #e64034;
+        }
+    }
+}

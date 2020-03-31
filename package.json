@@ -5,6 +5,7 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
     "@bugsnag/plugin-react": "^6.5.0",
+    "husky": "^4.2.3",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -16,10 +17,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
+    "lint:css": "stylelint 'src/**/*.scss' 'src/**/*.css'"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "browserslist": {
     "production": [
@@ -32,5 +41,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "stylelint": "^13.2.1",
+    "stylelint-config-standard": "^20.0.0"
   }
 }
