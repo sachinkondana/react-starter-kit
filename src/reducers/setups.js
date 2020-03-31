@@ -1,11 +1,11 @@
 const initialState = {
-  appVersion: '0.0.1'
+  appVersion: '0.0.1',
 };
 
-const todos = (state = [], action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     default:
-      return initialState
+      return state;
   }
 };
 
