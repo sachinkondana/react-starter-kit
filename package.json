@@ -1,6 +1,6 @@
 {
   "name": "goals",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
@@ -20,7 +20,8 @@
     "eject": "react-scripts eject",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "./node_modules/.bin/eslint --ext .jsx --ext .js --ignore-path .gitignore . --fix",
-    "lint:css": "stylelint 'src/**/*.scss' 'src/**/*.css'"
+    "lint:css": "stylelint 'src/**/*.scss' 'src/**/*.css'",
+    "release": "standard-version"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +55,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.5",
+    "standard-version": "^8.0.0",
     "stylelint": "^13.2.1",
     "stylelint-config-standard": "^20.0.0"
   },
