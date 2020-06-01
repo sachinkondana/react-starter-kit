@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* Ref https://www.conventionalcommits.org/en/v1.0.0-beta.4/
+* adding conventional commit message setups
 
 ### Features
 
